@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For My Love 🌹</title>
+
+<style>
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Georgia, serif;
+  background: linear-gradient(135deg, #fff0f3, #ffe0e8, #fff7ed);
+  color: #803449;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+.petal {
+  position: fixed;
+  top: -30px;
+  z-index: 5;
+  pointer-events: none;
+  animation: fall linear forwards;
+}
+
+@keyframes fall {
+  to { transform: translateY(110vh) rotate(650deg); }
+}
+
+main {
+  width: min(92%, 850px);
+  margin: auto;
+  padding: 35px 0 55px;
+}
+
+h1 {
+  font-size: clamp(27px, 6vw, 43px);
+  margin: 15px 0;
+}
+
+.subtitle { color: #a75b70; }
+
+.envelope {
+  position: relative;
+  width: 210px;
+  height: 140px;
+  margin: 65px auto 30px;
+  background: #d85e7b;
+  border-radius: 5px;
+  cursor: pointer;
+  box-shadow: 0 12px 30px #a13d5830;
+}
+
+.envelope::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-left: 105px solid transparent;
+  border-right: 105px solid transparent;
+  border-top: 82px solid #f18aa1;
+  transform-origin: top;
+  transition: transform .7s;
+  z-index: 2;
+}
+
+.envelope.open::before {
+  transform: rotateX(180deg);
+}
+
+.envelope::after {
+  content: "♥";
+  position: absolute;
+  inset: 42px 0 auto;
+  font-size: 38px;
+  color: white;
+}
+
+.tap {
+  font-size: 15px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  50% { opacity: .55; }
+}
+
+#surprise { display: none; }
+
+#surprise.show {
+  display: block;
+  animation: appear .9s ease;
+}
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.letter {
+  background: #fffaf3;
+  border: 1px solid #f3c6ce;
+  border-radius: 16px;
+  padding: 27px 23px;
+  line-height: 1.9;
+  text-align: left;
+  white-space: pre-line;
+  box-shadow: 0 12px 35px #b74b6820;
+}
+
+.letter h2 { text-align: center; }
+
+.memories {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  align-items: center;
+  margin-top: 25px;
+}
+
+.cake-card, .music-card {
+  background: #ffffffb8;
+  border: 1px solid #f6c9d3;
+  border-radius: 18px;
+  padding: 20px 12px;
+}
+
+.cake {
+  font-size: 76px;
+  animation: bob 2s infinite ease-in-out;
+}
+
+@keyframes bob {
+  50% { transform: translateY(-7px); }
+}
+
+button {
+  background: #c94d70;
+  color: white;
+  border: 0;
+  padding: 13px 18px;
+  border-radius: 30px;
+  font-size: 15px;
+  cursor: pointer;
+  margin: 8px 0;
+}
+
+button:active { transform: scale(.97); }
+
+a { color: #a63f60; }
+
+footer {
+  padding-top: 30px;
+  font-size: 14px;
+}
+
+@media (max-width: 520px) {
+  main { padding-top: 28px; }
+  .memories { grid-template-columns: 1fr; }
+  .letter { padding: 22px 18px; }
+}
+</style>
+</head>
+
+<body>
+<main>
+  <div style="font-size:32px">🌹 💗 🌹</div>
+  <h1>Happy Birthday, My Love!</h1>
+  <p class="subtitle">A little surprise made just for you ♡</p>
+
+  <div class="envelope" id="envelope"
+       role="button" tabindex="0"
+       aria-label="Open your birthday letter"
+       onclick="openLetter()"></div>
+
+  <p class="tap" id="tap">♡ Tap the envelope to open your letter ♡</p>
+
+  <section id="surprise">
+    <article class="letter">
+      <h2>To My Favourite Person 💌</h2>
+      My love,
+
+      Happy Birthday to the girl who means so much to me. ❤️
+
+      If I could give you one thing today, it would be the ability to see yourself through my eyes. Maybe then you would understand how special you are to me.
+
+      You make ordinary moments feel beautiful. Even from miles away, you have a place in my everyday thoughts, in my little smiles, and in all the things I wish I could share with you.
+
+      I cannot promise that every day will be perfect, but I want to keep learning how to love you better, listen to you, understand you, and celebrate every little thing that makes you YOU.
+
+      Today is your day, so please remember to smile, eat something delicious, and let yourself feel loved. You deserve happiness not just today, but on all the ordinary days after this birthday too.
+
+      If I could make one birthday wish for you, it would be that life becomes kinder to you, your dreams find their way to you, and you never forget how much you matter.
+
+      Thank you for being a part of my life. This little website is just a tiny piece of the love I wanted to send your way today.
+
+      Happy Birthday, meri jaan. 🌷
+
+      Always cheering for you,
+      Your favourite person ❤️
+    </article>
+
+    <div class="memories">
+      <div class="cake-card">
+        <div class="cake">🎂</div>
+        <h2>A Cake Just for You!</h2>
+        <p>Make a wish, birthday girl. ✨</p>
+        <button onclick="celebrate()">Make a Wish 🎉</button>
+        <p id="wish"></p>
+      </div>
+
+      <div class="music-card">
+        <div style="font-size:55px">🎶</div>
+        <h2>Your Birthday Song</h2>
+        <p>A little music for my favourite person.</p>
+        <button onclick="playSong()">Play Our Song ♫</button>
+        
+<iframe
+  id="songPlayer"
+  style="display:none; width:100%; height:200px; border:0; border-radius:12px;"
+  title="Birthday song"
+  allow="autoplay; encrypted-media"
+  allowfullscreen>
+</iframe>
+        
+        <p style="font-size:12px">
+          Opens YouTube so you can play your favourite version.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Made with love, just for you. 🌹<br>♡ You are my favourite notification. ♡</footer>
+</main>
+
+<script>
+function makePetal() {
+  const petal = document.createElement("div");
+  petal.className = "petal";
+  petal.textContent = ["🌹", "🌸", "💗", "🌷"][
+    Math.floor(Math.random() * 4)
+  ];
+  petal.style.left = Math.random() * 100 + "vw";
+  petal.style.fontSize = (14 + Math.random() * 15) + "px";
+  const duration = 5 + Math.random() * 6;
+  petal.style.animationDuration = duration + "s";
+  document.body.appendChild(petal);
+  setTimeout(() => petal.remove(), duration * 1000);
+}
+
+setInterval(makePetal, 400);
+
+function openLetter() {
+  const envelope = document.getElementById("envelope");
+  envelope.classList.add("open");
+  document.getElementById("tap").style.display = "none";
+  document.getElementById("surprise").classList.add("show");
+
+  setTimeout(() => {
+    document.getElementById("surprise").scrollIntoView({
+      behavior: "smooth",
+      block: "start"
+    });
+  }, 250);
+}
+
+document.getElementById("envelope").addEventListener("keydown", e => {
+  if (e.key === "Enter" || e.key === " ") {
+    e.preventDefault();
+    openLetter();
+  }
+});
+
+function celebrate() {
+  document.getElementById("wish").textContent =
+    "✨ May your sweetest wishes come true! Happy Birthday! ❤️";
+
+  for (let i = 0; i < 22; i++) {
+    setTimeout(makePetal, i * 90);
+  }
+}
+
+function playSong() {
+  const player = document.getElementById("songPlayer");
+  player.style.display = "block";
+  player.scrollIntoView({ behavior: "smooth", block: "center" });
+  player.src =
+    "https://www.youtube.com/embed/1ljlTfh2hj0?start=84&end=110&autoplay=1";
+}
+
+{
+  window.open(
+    "https://www.youtube.com/results?search_query=Tera+Naam+Doon+Atif+Aslam",
+    "_blank",
+    "noopener"
+  );
+}
+</script>
+</body>
+</html>
